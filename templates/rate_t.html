@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="referrer" content="no-referrer"/>
+
+   <link href="{{ url_for('static', filename='css/bootstrap-icons.css') }}" rel="stylesheet">
+
+<link href="{{ url_for('static', filename='css/dropzone.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/materialdesignicons.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/prism-okaidia.css') }}" rel="stylesheet">
+
+<!-- tables.html所需-->
+<link href="{{ url_for('static', filename='css/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/sb-admin-2.min.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/all.min.css') }}" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+      rel="stylesheet">
+
+<!-- Theme CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/theme.min.css') }}">
+
+    <title>时间分析表 | 来查看电影分布时间吧！</title>
+</head>
+
+<body class="bg-light">
+<div id="db-wrapper">
+    <!-- navbar vertical -->
+    <!-- Sidebar -->
+    <nav class="navbar-vertical navbar">
+        <div class="nav-scroller">
+            <!-- Brand logo -->
+            <a class="navbar-brand" href="/home">
+                <h3 style="color: #ffffff;font-weight: bold;">电影随心配</h3>
+            </a>
+            <!-- Navbar nav -->
+            <ul class="navbar-nav flex-column" id="sideNavbar">
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="/home">
+                        <i data-feather="home" class="nav-icon icon-xs me-2"></i> 首页
+                    </a>
+
+                </li>
+
+                <!-- Nav item -->
+                <li class="nav-item">
+                    <div class="navbar-heading">还不知道看什么电影吗？</div>
+                </li>
+                <!-- 账号管理 -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse"
+                       data-bs-target="#navAuthentication" aria-expanded="false" aria-controls="navAuthentication">
+                        <i data-feather="lock" class="nav-icon icon-xs me-2">
+                        </i> 账号管理
+                    </a>
+                    <div id="navAuthentication" class="collapse " data-bs-parent="#sideNavbar">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link " href="/login"> 退出当前账号</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  " href="/register"> 注册新的账号</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Nav item -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="/movieList">
+                        <i data-feather="layers" class="nav-icon icon-xs me-2">
+                        </i> 电影详细信息
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <div class="navbar-heading">数据表</div>
+                </li>
+                <!-- 时间分析表 -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow " href="/time_t">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 时间分析表
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link has-arrow active" href="/rate_t">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 评分分析表
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="/map_t">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 地图分析表
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/act_dir_t">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 演员与导演分析表
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <!-- Page content -->
+    <div id="page-content">
+        <div class="header @@classList">
+            <!-- navbar -->
+            <nav class="navbar-classic navbar navbar-expand-lg">
+                <a id="nav-toggle" href="#"><i data-feather="menu" class="nav-icon me-2 icon-xs"></i></a>
+
+                <!--Navbar nav -->
+                <ul class="navbar-nav navbar-right-wrap ms-auto d-flex nav-top-wrap">
+                    <!-- List -->
+                    <li class="dropdown ms-2">
+                        <a class="rounded-circle" href="#" role="button" id="dropdownUser" data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <div class="avatar avatar-md avatar-indicators avatar-online">
+                               <img alt="avatar" src="{{ url_for('static', filename='picture/head/head4.png') }}" class="rounded-circle">
+                            </div>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                            <div class="px-4 pb-0 pt-2">
+
+                                <div class="lh-1 ">
+                                    <a href="#" class="text-inherit fs-6">{{email}}</a>
+                                </div>
+
+                                <div class=" dropdown-divider mt-3 mb-2"></div>
+                            </div>
+
+                            <ul class="list-unstyled">
+
+                                <li>
+                                    <a class="dropdown-item" href="/logout">
+                                        <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>退出登录
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <!-- Container fluid -->
+        <div class="bg-white pt-4 pb-21"></div>
+        <div class="container mt-n22 px-4 ">
+            <div class="row justify-content-center ">
+                <div class="card-body" style="align-item">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            {% if type == 'all' %}
+                                <a href="/rate_t/all" class="btn btn-secondary active">全部</a>
+                            {% else %}
+                                <a href="/rate_t/all" class="btn btn-secondary">全部</a>
+                            {% endif %}
+                            {% for i in typeList %}
+                                {%if type == i%}
+                                    <a href="/rate_t/{{i}}" class="active btn btn-secondary ">{{i}}</a>
+                                {% else %}
+                                    <a href="/rate_t/{{i}}" class="btn btn-secondary">{{i}}</a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+            </div>
+            <div class="row ">
+                <!-- Area Chart -->
+                <div class="col-xl-12 col-lg-12">
+                    <!-- Card Header - Dropdown-->
+                    <div class="card shadow mb-4 ">
+                        <div class="card-header bg-white py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h4 class="m-0 font-weight-bold" style="font-weight: bold !important;">电影评分统计</h4>
+                        </div>
+                        <!-- Card Body-->
+                        <div class="card-body">
+                            <div id="main" style="width:110%;height:550px">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="copy-right row mt-8 text-center">
+                    <p>Copyright &copy; 还不知道看什么电影吗？ <a target="_blank"
+                                                                 href="https://movie.douban.com/top250">
+                        豆瓣电影排行榜</a></p>
+                </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<!-- Libs JS -->
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/feather.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/prism.js') }}"></script>
+<script src="{{ url_for('static', filename='js/apexcharts.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dropzone.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/prism-toolbar.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/prism-copy-to-clipboard.min.js') }}"></script>
+
+<!-- Page level plugins -->
+<script src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/dataTables.bootstrap4.min.js') }}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{{ url_for('static', filename='js/datatables-demo.js') }}"></script>
+
+<!-- Theme JS -->
+<script src="{{ url_for('static', filename='js/theme.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/echarts.js') }}"></script>
+
+<!--table-->
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+<!-- Core plugin JavaScript-->
+<script src="{{ url_for('static', filename='js/jquery.easing.min.js') }}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{{ url_for('static', filename='js/sb-admin-2.min.js') }}"></script>
+
+
+<script>
+var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+var typeEcharData = {{ typeEcharData | tojson | safe }};
+
+option = {
+  title: {
+    subtext: '快来看看有没有想看的电影类型吧😍',
+    left: 'center'
+  },
+  legend: {
+    top: 'bottom'
+  },
+  toolbox: {
+    show: true,
+    feature: {
+      mark: { show: true },
+      dataView: { show: true, readOnly: false },
+      restore: { show: true },
+      saveAsImage: { show: true }
+    }
+  },
+  tooltip: {  // 添加tooltip配置
+    trigger: 'item', // 触发类型为数据项触发
+    formatter: '{a} <br/>{b}分，共有{c}部电影，评分占比为{d}%' // 提示框的格式化字符串
+  },
+  series: [
+    {
+      name: '该电影类型的评分情况：',
+      type: 'pie',
+      radius: [50, 200],
+      center: ['50%', '50%'],
+      roseType: 'area',
+      itemStyle: {
+        borderRadius: 3
+      },
+      data: typeEcharData
+    }
+  ]
+};
+
+option && myChart.setOption(option);
+
+</script>
+
+</body>
+
+</html>

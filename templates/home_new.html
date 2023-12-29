@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="static/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="static/css/dropzone.css" rel="stylesheet">
+    <link href="static/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="static/css/prism-okaidia.css" rel="stylesheet">
+
+    <!-- tables.html所需-->
+    <link href="static/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="static/css/theme.min.css">
+    <title>电影 | 来查看电影的详细信息吧！</title>
+
+    <!-- 随机生成需要！！ -->
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/nice-select.css">
+    <link rel="stylesheet" href="static/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="static/css/flaticon.css">
+    <link rel="stylesheet" href="static/css/meanmenu.css">
+    <link rel="stylesheet" href="static/css/animate.min.css">
+    <link rel="stylesheet" href="static/css/animated-headeline.css">
+    <link rel="stylesheet" href="static/css/slick.css">
+    <link rel="stylesheet" href="static/css/default.css">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/responsive.css">
+
+</head>
+
+<body class="bg-light">
+<div id="db-wrapper">
+    <!-- navbar vertical -->
+    <!-- Sidebar -->
+    <nav class="navbar-vertical navbar">
+        <div class="nav-scroller">
+            <!-- Brand logo -->
+            <a class="navbar-brand" href="/home">
+                <img src="static/picture/logo.svg" alt="">
+            </a>
+            <!-- Navbar nav -->
+            <ul class="navbar-nav flex-column" id="sideNavbar">
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="/home">
+                        <i data-feather="home" class="nav-icon icon-xs me-2"></i> 首页
+                    </a>
+
+                </li>
+
+                <!-- Nav item -->
+                <li class="nav-item">
+                    <div class="navbar-heading">还不知道看什么电影吗？</div>
+                </li>
+                <!-- 账号管理 -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse"
+                       data-bs-target="#navAuthentication" aria-expanded="false" aria-controls="navAuthentication">
+                        <i data-feather="lock" class="nav-icon icon-xs me-2">
+                        </i> 账号管理
+                    </a>
+                    <div id="navAuthentication" class="collapse " data-bs-parent="#sideNavbar">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link " href="/login"> 退出当前账号</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  " href="/register"> 注册新的账号</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Nav item -->
+                <!-- Nav item -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow active" href="/movieList">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 电影详细信息
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <!-- Page content -->
+    <div id="page-content">
+        <div class="header @@classList">
+            <!-- navbar -->
+            <nav class="navbar-classic navbar navbar-expand-lg">
+                <a id="nav-toggle" href="#"><i data-feather="menu" class="nav-icon me-2 icon-xs"></i></a>
+
+                <!--Navbar nav -->
+                <ul class="navbar-nav navbar-right-wrap ms-auto d-flex nav-top-wrap">
+                    <!-- List -->
+                    <li class="dropdown ms-2">
+                        <a class="rounded-circle" href="#" role="button" id="dropdownUser" data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <div class="avatar avatar-md avatar-indicators avatar-online">
+                                <img alt="avatar" src="static/picture/head/head4.png" class="rounded-circle">
+                            </div>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                            <div class="px-4 pb-0 pt-2">
+
+                                <div class="lh-1 ">
+                                    <a href="#" class="text-inherit fs-6">{{email}}</a>
+                                </div>
+
+                                <div class=" dropdown-divider mt-3 mb-2"></div>
+                            </div>
+
+                            <ul class="list-unstyled">
+
+                                <li>
+                                    <a class="dropdown-item" href="/logout">
+                                        <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>退出登录
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <!-- Container fluid -->
+        <div class="bg-primary pt-10 pb-21"></div>
+        <div class="container-fluid mt-n22 px-6">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-12">
+
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="mb-2 mb-lg-0">
+                                <h3 class="mb-0  text-white">Projects</h3>
+                            </div>
+                            <div>
+                                <a href="#" class="btn btn-white">Create New Project</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-area pt-150 pb-170" id="home" style="background-color: #F3F3F3;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="slider-content text-center">
+                            <h1 class="cd-headline clip is-full-width">
+                                <span>随心配  </span>
+                                <span class="cd-words-wrapper" style = "width:91px;">
+                                    <b class="is-visible">电影！</b>
+                                    <b class="color">快乐！</b>
+                                </span>
+                            </h1>
+                            <p>We Have Various Choices For You.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="search-tab wow zoomIn" data-wow-duration="2s" data-wow-delay=".5s">
+                            <ul class="nav nav-pills justify-content-center mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                   <a class="nav-link active" id="pills-buy-tab" data-toggle="pill" href="#pills-buy" role="tab" aria-controls="pills-buy" aria-selected="true">For Fun</a>
+                                </li>
+                            </ul>
+
+                              <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-buy" role="tabpanel" aria-labelledby="pills-buy-tab">
+                                    <div class="search">
+                                        <form action="#" method="post">
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+                                                <div class="single-search">
+                                                    <select id="type" name="电影类型">
+                                                        <option>电影类型</option>
+                                                        <option>动作</option>
+                                                        <option>喜剧</option>
+                                                        <option>爱情</option>
+                                                        <option>科幻</option>
+                                                        <option>恐怖</option>
+                                                        <option>剧情</option>
+                                                        <option>动画</option>
+                                                        <option>惊悚</option>
+                                                        <option>犯罪</option>
+                                                        <option>冒险</option>
+                                                        <option>奇幻</option>
+                                                        <option>战争</option>
+                                                        <option>历史</option>
+                                                        <option>音乐</option>
+                                                        <option>歌舞</option>
+                                                        <option>传记</option>
+                                                        <option>纪录片</option>
+                                                        <option>西部</option>
+                                                        <option>家庭</option>
+                                                        <option>运动</option>
+                                                        <option>古装</option>
+                                                        <option>武侠</option>
+                                                    </select>
+                                                    <div class="nice-select" tabindex="0">
+                                                        <span class="current">电影类型</span>
+                                                        <ul class="list">
+                                                            <li data-value="电影类型" class="option selected">电影类型</li>
+                                                            <li data-value="动作" class="option">动作</li>
+                                                            <li data-value="喜剧" class="option">喜剧</li>
+                                                            <li data-value="爱情" class="option">爱情</li>
+                                                            <li data-value="科幻" class="option">科幻</li>
+                                                            <li data-value="恐怖" class="option">恐怖</li>
+                                                            <li data-value="剧情" class="option">剧情</li>
+                                                            <li data-value="动画" class="option">动画</li>
+                                                            <li data-value="惊悚" class="option">惊悚</li>
+                                                            <li data-value="犯罪" class="option">犯罪</li>
+                                                            <li data-value="冒险" class="option">冒险</li>
+                                                            <li data-value="奇幻" class="option">奇幻</li>
+                                                            <li data-value="战争" class="option">战争</li>
+                                                            <li data-value="历史" class="option">历史</li>
+                                                            <li data-value="音乐" class="option">音乐</li>
+                                                            <li data-value="歌舞" class="option">歌舞</li>
+                                                            <li data-value="传记" class="option">传记</li>
+                                                            <li data-value="纪录片" class="option">记录片</li>
+                                                            <li data-value="西部" class="option">西部</li>
+                                                            <li data-value="家庭" class="option">家庭</li>
+                                                            <li data-value="运动" class="option">运动</li>
+                                                            <li data-value="古装" class="option">古装</li>
+                                                            <li data-value="武侠" class="option">武侠</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+                                                <div class="single-search">
+                                                    <select id="country" name="电影国家">
+                                                        <option>电影国家</option>
+                                                        <option>中国</option>
+                                                        <option>美国</option>
+                                                        <option>英国</option>
+                                                        <option>日本</option>
+                                                        <option>法国</option>
+                                                        <option>德国</option>
+                                                        <option>印度</option>
+                                                        <option>意大利</option>
+                                                        <option>韩国</option>
+                                                        <option>加拿大</option>
+                                                        <option>澳大利亚</option>
+                                                        <option>西班牙</option>
+                                                        <option>俄罗斯</option>
+                                                        <option>泰国</option>
+                                                        <option>瑞典</option>
+                                                        <option>巴西</option>
+                                                        <option>墨西哥</option>
+                                                        <option>伊朗</option>
+                                                        <option>土耳其</option>
+                                                        <option>阿根廷</option>
+                                                    </select>
+                                                    <div class="nice-select" tabindex="0">
+                                                        <span class="current">电影国家</span>
+                                                        <ul class="list">
+                                                            <li data-value="电影国家" class="option selected">电影国家</li>
+                                                            <li data-value="中国" class="option">中国</li>
+                                                            <li data-value="美国" class="option">美国</li>
+                                                            <li data-value="英国" class="option">英国</li>
+                                                            <li data-value="日本" class="option">日本</li>
+                                                            <li data-value="法国" class="option">法国</li>
+                                                            <li data-value="德国" class="option">德国</li>
+                                                            <li data-value="印度" class="option">印度</li>
+                                                            <li data-value="意大利" class="option">意大利</li>
+                                                            <li data-value="韩国" class="option">韩国</li>
+                                                            <li data-value="加拿大" class="option">加拿大</li>
+                                                            <li data-value="澳大利亚" class="option">澳大利亚</li>
+                                                            <li data-value="西班牙" class="option">西班牙</li>
+                                                            <li data-value="俄罗斯" class="option">俄罗斯</li>
+                                                            <li data-value="泰国" class="option">泰国</li>
+                                                            <li data-value="瑞典" class="option">瑞典</li>
+                                                            <li data-value="巴西" class="option">巴西</li>
+                                                            <li data-value="墨西哥" class="option">墨西哥</li>
+                                                            <li data-value="伊朗" class="option">伊朗</li>
+                                                            <li data-value="土耳其" class="option">土耳其</li>
+                                                            <li data-value="阿根廷" class="option">阿根廷</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+                                                <div class="single-search">
+                                                    <select id="rating" name="最低评分">
+                                                        <option>最低评分</option>
+                                                        <option>9</option>
+                                                        <option>8</option>
+                                                        <option>7</option>
+                                                        <option>6</option>
+                                                        <option>5</option>
+                                                        <option>无下限</option>
+                                                    </select>
+                                                    <div class="nice-select" tabindex="0">
+                                                        <span class="current">最低评分</span>
+                                                        <ul class="list">
+                                                            <li data-value="最低评分" class="option selected">最低评分</li>
+                                                            <li data-value="9" class="option">9</li>
+                                                            <li data-value="8" class="option">8</li>
+                                                            <li data-value="7" class="option">7</li>
+                                                            <li data-value="6" class="option">6</li>
+                                                            <li data-value="5" class="option">5</li>
+                                                            <li data-value="无下限" class="option">无下限</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+                                                <div class="single-search">
+                                                    <button id="generate">随心配！</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="pills-sell" role="tabpanel" aria-labelledby="pills-sell-tab">
+                                    <div class="search">
+                                        <form action="#" method="post">
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+                                                <div class="single-search">
+                                                    <select>
+                                                        <option>电影类型</option>
+                                                        <option>动作</option>
+                                                        <option>喜剧</option>
+                                                        <option>爱情</option>
+                                                        <option>科幻</option>
+                                                        <option>恐怖</option>
+                                                        <option>剧情</option>
+                                                        <option>动画</option>
+                                                        <option>惊悚</option>
+                                                        <option>犯罪</option>
+                                                        <option>冒险</option>
+                                                        <option>奇幻</option>
+                                                        <option>战争</option>
+                                                        <option>历史</option>
+                                                        <option>音乐</option>
+                                                        <option>歌舞</option>
+                                                        <option>传记</option>
+                                                        <option>纪录片</option>
+                                                        <option>西部</option>
+                                                        <option>家庭</option>
+                                                        <option>运动</option>
+                                                        <option>古装</option>
+                                                        <option>武侠</option>
+                                                    </select>
+                                                    <div class="nice-select" tabindex="0">
+                                                        <span class="current">电影类型</span>
+                                                        <ul class="list">
+                                                            <li data-value="电影类型" class="option selected">电影类型</li>
+                                                            <li data-value="动作" class="option">动作</li>
+                                                            <li data-value="喜剧" class="option">喜剧</li>
+                                                            <li data-value="爱情" class="option">爱情</li>
+                                                            <li data-value="科幻" class="option">科幻</li>
+                                                            <li data-value="恐怖" class="option">恐怖</li>
+                                                            <li data-value="剧情" class="option">剧情</li>
+                                                            <li data-value="动画" class="option">动画</li>
+                                                            <li data-value="惊悚" class="option">惊悚</li>
+                                                            <li data-value="犯罪" class="option">犯罪</li>
+                                                            <li data-value="冒险" class="option">冒险</li>
+                                                            <li data-value="奇幻" class="option">奇幻</li>
+                                                            <li data-value="战争" class="option">战争</li>
+                                                            <li data-value="历史" class="option">历史</li>
+                                                            <li data-value="音乐" class="option">音乐</li>
+                                                            <li data-value="歌舞" class="option">歌舞</li>
+                                                            <li data-value="传记" class="option">传记</li>
+                                                            <li data-value="纪录片" class="option">记录片</li>
+                                                            <li data-value="西部" class="option">西部</li>
+                                                            <li data-value="家庭" class="option">家庭</li>
+                                                            <li data-value="运动" class="option">运动</li>
+                                                            <li data-value="古装" class="option">古装</li>
+                                                            <li data-value="武侠" class="option">武侠</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+                                                <div class="single-search">
+                                                    <select>
+                                                        <option>国家</option>
+                                                        <option>中国</option>
+                                                        <option>美国</option>
+                                                        <option>英国</option>
+                                                        <option>日本</option>
+                                                        <option>法国</option>
+                                                        <option>德国</option>
+                                                        <option>印度</option>
+                                                        <option>意大利</option>
+                                                        <option>韩国</option>
+                                                        <option>加拿大</option>
+                                                        <option>澳大利亚</option>
+                                                        <option>西班牙</option>
+                                                        <option>俄罗斯</option>
+                                                        <option>泰国</option>
+                                                        <option>瑞典</option>
+                                                        <option>巴西</option>
+                                                        <option>墨西哥</option>
+                                                        <option>伊朗</option>
+                                                        <option>土耳其</option>
+                                                        <option>阿根廷</option>
+                                                    </select>
+                                                    <div class="nice-select" tabindex="0">
+                                                        <span class="current">电影国家</span>
+                                                        <ul class="list">
+                                                            <li data-value="电影国家" class="option selected">电影国家</li>
+                                                            <li data-value="中国" class="option">中国</li>
+                                                            <li data-value="美国" class="option">美国</li>
+                                                            <li data-value="英国" class="option">英国</li>
+                                                            <li data-value="日本" class="option">日本</li>
+                                                            <li data-value="法国" class="option">法国</li>
+                                                            <li data-value="德国" class="option">德国</li>
+                                                            <li data-value="印度" class="option">印度</li>
+                                                            <li data-value="意大利" class="option">意大利</li>
+                                                            <li data-value="韩国" class="option">韩国</li>
+                                                            <li data-value="加拿大" class="option">加拿大</li>
+                                                            <li data-value="澳大利亚" class="option">澳大利亚</li>
+                                                            <li data-value="西班牙" class="option">西班牙</li>
+                                                            <li data-value="俄罗斯" class="option">俄罗斯</li>
+                                                            <li data-value="泰国" class="option">泰国</li>
+                                                            <li data-value="瑞典" class="option">瑞典</li>
+                                                            <li data-value="巴西" class="option">巴西</li>
+                                                            <li data-value="墨西哥" class="option">墨西哥</li>
+                                                            <li data-value="伊朗" class="option">伊朗</li>
+                                                            <li data-value="土耳其" class="option">土耳其</li>
+                                                            <li data-value="阿根廷" class="option">阿根廷</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+                                                <div class="single-search">
+                                                    <select>
+                                                        <option>最低评分</option>
+                                                        <option>9</option>
+                                                        <option>8</option>
+                                                        <option>7</option>
+                                                        <option>6</option>
+                                                        <option>5</option>
+                                                        <option>无下限</option>
+                                                    </select>
+                                                    <div class="nice-select" tabindex="0">
+                                                        <span class="current">最低评分</span>
+                                                        <ul class="list">
+                                                            <li data-value="最低评分" class="option selected">最低评分</li>
+                                                            <li data-value="9" class="option">9</li>
+                                                            <li data-value="8" class="option">8</li>
+                                                            <li data-value="7" class="option">7</li>
+                                                            <li data-value="6" class="option">6</li>
+                                                            <li data-value="5" class="option">5</li>
+                                                            <li data-value="无下限" class="option">无下限</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+                                                <div class="single-search">
+                                                    <button >随心配！</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!-- 显示推荐的电影信息 -->
+                                        <div id="result"></div>
+                                        <!-- 使用 jQuery 发送 AJAX 请求 -->
+                                        <script>
+                                        // 当用户点击生成按钮时
+                                            $("#generate").click(function() {
+                                                // 获取表单数据
+                                                var data = $("form").serialize();
+                                                // 发送 POST 请求到 /generate
+                                                $.post("/generate", data, function(response) {
+                                                    // 如果有返回的电影信息，显示在页面上
+                                                    if (response.name) {
+                                                        $("#result").html(
+                                                            "<h2>为你推荐的电影是：</h2>" +
+                                                            "<p>电影名称：" + response.name + "</p>" +
+                                                            "<p>导演：" + response.director + "</p>" +
+                                                            "<p>主演：" + response.actor + "</p>" +
+                                                            "<p>电影年份：" + response.year + "</p>" +
+                                                            "<p>电影类型：" + response.type + "</p>" +
+                                                            "<p>电影国家：" + response.country + "</p>" +
+                                                            "<p>电影评分：" + response.rating + "</p>" +
+                                                            "<p>评论人数：" + response.rate_cnt + "</p>" +
+                                                            "<p>精彩短评：" + response.outline + "</p>" +
+                                                            "<p>详情查看：" + response.name + "</p>" +
+
+                                                        );
+                                                    }
+                                                    // 如果有返回的提示信息，显示在页面上
+                                                    if (response.message) {
+                                                           $("#result").html("<p>" + response.message + "</p>");
+                                                    }
+                                                });
+                                             });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="copy-right row mt-8 text-center">
+                    <p>Copyright &copy; 还不知道看什么电影吗？ <a target="_blank"
+                                                                 href="https://movie.douban.com/top250">
+                        豆瓣电影排行榜</a></p>
+        </div>
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<!-- Libs JS -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.bundle.min.js"></script>
+<script src="static/js/jquery.slimscroll.min.js"></script>
+<script src="static/js/feather.min.js"></script>
+<script src="static/js/prism.js"></script>
+<script src="static/js/apexcharts.min.js"></script>
+<script src="static/js/dropzone.min.js"></script>
+<script src="static/js/prism-toolbar.min.js"></script>
+<script src="static/js/prism-copy-to-clipboard.min.js"></script>
+
+
+<!-- Page level plugins -->
+<script src="static/js/jquery.dataTables.min.js"></script>
+<script src="static/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="static/js/datatables-demo.js"></script>
+
+<!-- 随机选需要 -->
+<script src="static/js/modernizr-3.5.0.min.js"></script>
+        <script src="static/js/jquery-1.12.4.min.js"></script>
+        <script src="static/js/popper.min.js"></script>
+        <script src="static/js/bootstrap.min.js"></script>
+        <script src="static/js/one-page-nav-min.js"></script>
+        <script src="static/js/waypoints.min.js"></script>
+        <script src="static/js/jquery.counterup.min.js"></script>
+        <script src="static/js/jquery.nice-select.min.js"></script>
+        <script src="static/js/slick.min.js"></script>
+        <script src="static/js/jquery.meanmenu.min.js"></script>
+        <script src="static/js/wow.min.js"></script>
+        <script src="static/js/animated-headline.js"></script>
+        <script src="static/js/main.js"></script>
+    	<div style="display:none;"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Theme JS -->
+<script src="static/js/theme.min.js"></script>
+
+<script src="static/js/echarts.js"></script>
+<script>
+var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+var typeEcharData = {{ typeEcharData | tojson | safe }};
+
+option = {
+  title: {
+    subtext: '快来看看有没有想看的电影类型吧😍',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left'
+  },
+  series: [
+    {
+      name: '种类个数',
+      type: 'pie',
+      radius: '50%',
+      data: typeEcharData,
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+
+option && myChart.setOption(option);
+
+
+
+
+
+
+</script>
+<script>
+var chartDoms = document.getElementById('mains');
+var myCharts = echarts.init(chartDoms);
+var options;
+
+options = {
+  title: {
+    subtext: '很多经典电影还在等你哦😊',
+    left: 'center'
+  },
+
+  tooltip: {
+    trigger: 'axis', // 设置触发方式为坐标轴触发
+    axisPointer: {
+      type: 'cross' // 设置指示器类型为十字准星指示器
+    }
+  },
+  xAxis: {
+    type: 'category',
+    data: {{ row | tojson }}
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: {{ columns }},
+      type: 'line',
+      areaStyle: {
+        color: 'rgba(0, 128, 255, 0.5)'
+      },
+      emphasis: {
+        focus: 'series'
+      }
+    }
+  ]
+};
+
+options && myCharts.setOption(options);
+
+
+
+
+
+
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="static/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="static/css/dropzone.css" rel="stylesheet">
+    <link href="static/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="static/css/prism-okaidia.css" rel="stylesheet">
+
+    <!-- tables.html所需-->
+    <link href="static/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="static/css/theme.min.css">
+    <title>首页 | 快来选择你要看的电影吧！</title>
+</head>
+
+<body class="bg-light">
+<div id="db-wrapper">
+    <!-- navbar vertical -->
+    <!-- Sidebar -->
+    <nav class="navbar-vertical navbar">
+        <div class="nav-scroller">
+            <!-- Brand logo -->
+            <a class="navbar-brand" href="/home">
+                <img src="static/picture/logo.svg" alt="">
+            </a>
+            <!-- Navbar nav -->
+            <ul class="navbar-nav flex-column" id="sideNavbar">
+                <li class="nav-item">
+                    <a class="nav-link has-arrow  active " href="/home">
+                        <i data-feather="home" class="nav-icon icon-xs me-2"></i> 首页
+                    </a>
+
+                </li>
+
+                <!-- Nav item -->
+                <li class="nav-item">
+                    <div class="navbar-heading">还不知道看什么电影吗？</div>
+                </li>
+                <!-- 账号管理 -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse"
+                       data-bs-target="#navAuthentication" aria-expanded="false" aria-controls="navAuthentication">
+                        <i data-feather="lock" class="nav-icon icon-xs me-2">
+                        </i> 账号管理
+                    </a>
+                    <div id="navAuthentication" class="collapse " data-bs-parent="#sideNavbar">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link " href="/login"> 退出当前账号</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  " href="/register"> 注册新的账号</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- Nav item -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow " href="/movieList">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 电影详细信息
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <!-- Page content -->
+    <div id="page-content">
+        <div class="header @@classList">
+            <!-- navbar -->
+            <nav class="navbar-classic navbar navbar-expand-lg">
+                <a id="nav-toggle" href="#"><i data-feather="menu" class="nav-icon me-2 icon-xs"></i></a>
+
+                <!--Navbar nav -->
+                <ul class="navbar-nav navbar-right-wrap ms-auto d-flex nav-top-wrap">
+                    <!-- List -->
+                    <li class="dropdown ms-2">
+                        <a class="rounded-circle" href="#" role="button" id="dropdownUser" data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <div class="avatar avatar-md avatar-indicators avatar-online">
+                                <img alt="avatar" src="static/picture/head/head4.png" class="rounded-circle">
+                            </div>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                            <div class="px-4 pb-0 pt-2">
+
+                                <div class="lh-1 ">
+                                    <a href="#" class="text-inherit fs-6">{{email}}</a>
+                                </div>
+
+                                <div class=" dropdown-divider mt-3 mb-2"></div>
+                            </div>
+
+                            <ul class="list-unstyled">
+
+                                <li>
+                                    <a class="dropdown-item" href="/logout">
+                                        <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>退出登录
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Container fluid -->
+
+
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<!-- Libs JS -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.bundle.min.js"></script>
+<script src="static/js/jquery.slimscroll.min.js"></script>
+<script src="static/js/feather.min.js"></script>
+<script src="static/js/prism.js"></script>
+<script src="static/js/apexcharts.min.js"></script>
+<script src="static/js/dropzone.min.js"></script>
+<script src="static/js/prism-toolbar.min.js"></script>
+<script src="static/js/prism-copy-to-clipboard.min.js"></script>
+
+
+<!-- Page level plugins -->
+<script src="static/js/jquery.dataTables.min.js"></script>
+<script src="static/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="static/js/datatables-demo.js"></script>
+
+
+<!-- Theme JS -->
+<script src="static/js/theme.min.js"></script>
+
+<script src="static/js/echarts.js"></script>
+<script>
+var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+var typeEcharData = {{ typeEcharData | tojson | safe }};
+
+option = {
+  title: {
+    subtext: '快来看看有没有想看的电影类型吧😍',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left'
+  },
+  series: [
+    {
+      name: '种类个数',
+      type: 'pie',
+      radius: '50%',
+      data: typeEcharData,
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+
+option && myChart.setOption(option);
+
+
+
+
+
+
+</script>
+<script>
+var chartDoms = document.getElementById('mains');
+var myCharts = echarts.init(chartDoms);
+var options;
+
+options = {
+  title: {
+    subtext: '很多经典电影还在等你哦😊',
+    left: 'center'
+  },
+
+  tooltip: {
+    trigger: 'axis', // 设置触发方式为坐标轴触发
+    axisPointer: {
+      type: 'cross' // 设置指示器类型为十字准星指示器
+    }
+  },
+  xAxis: {
+    type: 'category',
+    data: {{ row | tojson }}
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: {{ columns }},
+      type: 'line',
+      areaStyle: {
+        color: 'rgba(0, 128, 255, 0.5)'
+      },
+      emphasis: {
+        focus: 'series'
+      }
+    }
+  ]
+};
+
+options && myCharts.setOption(options);
+
+
+
+
+
+
+
+
+</script>
+</body>
+
+</html>

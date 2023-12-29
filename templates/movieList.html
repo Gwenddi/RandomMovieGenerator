@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="referrer" content="no-referrer"/>
+
+    <link href="static/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="static/css/dropzone.css" rel="stylesheet">
+    <link href="static/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="static/css/prism-okaidia.css" rel="stylesheet">
+
+    <!-- tables.html所需-->
+    <link href="static/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="static/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="static/css/theme.min.css">
+    <title>电影 | 来查看电影的详细信息吧！</title>
+</head>
+
+<body class="bg-light">
+<div id="db-wrapper">
+    <!-- navbar vertical -->
+    <!-- Sidebar -->
+    <nav class="navbar-vertical navbar">
+        <div class="nav-scroller">
+            <!-- Brand logo -->
+            <a class="navbar-brand" href="/home">
+              <h3 style="color: #ffffff;font-weight: bold;">电影随心配</h3>
+            </a>
+            <!-- Navbar nav -->
+            <ul class="navbar-nav flex-column" id="sideNavbar">
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="/home">
+                        <i data-feather="home" class="nav-icon icon-xs me-2"></i> 首页
+                    </a>
+
+                </li>
+
+                <!-- Nav item -->
+                <li class="nav-item">
+                    <div class="navbar-heading">还不知道看什么电影吗？</div>
+                </li>
+                <!-- 账号管理 -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse"
+                       data-bs-target="#navAuthentication" aria-expanded="false" aria-controls="navAuthentication">
+                        <i data-feather="lock" class="nav-icon icon-xs me-2">
+                        </i> 账号管理
+                    </a>
+                    <div id="navAuthentication" class="collapse " data-bs-parent="#sideNavbar">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link " href="/login"> 退出当前账号</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  " href="/register"> 注册新的账号</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Nav item -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow active" href="/movieList">
+                        <i data-feather="layers" class="nav-icon icon-xs me-2">
+                        </i> 电影详细信息
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <div class="navbar-heading">数据表</div>
+                </li>
+                <!-- 时间分析表 -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="/time_t">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 时间分析表
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="/rate_t">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 评分分析表
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="/time_t">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 地区分析表
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/act_dir_t">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 演员与导演分析表
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <!-- Page content -->
+    <div id="page-content">
+        <div class="header @@classList">
+            <!-- navbar -->
+            <nav class="navbar-classic navbar navbar-expand-lg">
+                <a id="nav-toggle" href="#"><i data-feather="menu" class="nav-icon me-2 icon-xs"></i></a>
+
+                <!--Navbar nav -->
+                <ul class="navbar-nav navbar-right-wrap ms-auto d-flex nav-top-wrap">
+                    <!-- List -->
+                    <li class="dropdown ms-2">
+                        <a class="rounded-circle" href="#" role="button" id="dropdownUser" data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <div class="avatar avatar-md avatar-indicators avatar-online">
+                                <img alt="avatar" src="static/picture/head/head4.png" class="rounded-circle">
+                            </div>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                            <div class="px-4 pb-0 pt-2">
+
+                                <div class="lh-1 ">
+                                    <a href="#" class="text-inherit fs-6">{{email}}</a>
+                                </div>
+
+                                <div class=" dropdown-divider mt-3 mb-2"></div>
+                            </div>
+
+                            <ul class="list-unstyled">
+
+                                <li>
+                                    <a class="dropdown-item" href="/logout">
+                                        <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>退出登录
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <!-- Container fluid -->
+        <div class="bg-primary pt-10 pb-21"></div>
+        <div class="container mt-n22 px-6">
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-md-12 col-12 ">
+                    <!-- card -->
+                    <div class="card ">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <!-- heading -->
+                            <div class="d-flex justify-content-between align-items-center
+                    mb-3">
+                                <div>
+                                    <h5 class="mb-0">电影类型数</h5>
+                                </div>
+                                <div class="icon-shape icon-md bg-light-primary text-primary
+                      rounded-2">
+                                    <i class="bi bi-list-task fs-4"></i>
+                                </div>
+                            </div>
+                            <!-- project number -->
+                            <div>
+                                <h2 class="fw-bold">{{ lenType }}个</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-12 col-12 ">
+                    <!-- card -->
+                    <div class="card ">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <!-- heading -->
+                            <div class="d-flex justify-content-between align-items-center
+                    mb-3">
+                                <div>
+                                    <h5 class="mb-0">豆瓣最高评分</h5>
+                                </div>
+                                <div class="icon-shape icon-md bg-light-primary text-primary
+                      rounded-2">
+                                    <i class="bi bi-bullseye fs-4"></i>
+                                </div>
+                            </div>
+                            <!-- project number -->
+                            <div>
+                                <h2 class="fw-bold">{{maxRate}}分</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-12 col-12">
+                    <!-- card -->
+                    <div class="card ">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <!-- heading -->
+                            <div class="d-flex justify-content-between align-items-center
+                    mb-3">
+                                <div>
+                                    <h5 class="mb-0">出场最多演员</h5>
+                                </div>
+                                <div class="icon-shape icon-md bg-light-primary text-primary
+                      rounded-2">
+                                    <i class="bi bi-people fs-4"></i>
+                                </div>
+                            </div>
+                            <!-- project number -->
+                            <div>
+                                <h2 class="fw-bold">{{maxCasts}}</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-12 col-12 ">
+                    <!-- card -->
+                    <div class="card ">
+                        <!-- card body -->
+                        <div class="card-body">
+                            <!-- heading -->
+                            <div class="d-flex justify-content-between align-items-center
+                    mb-3">
+                                <div>
+                                    <h5 class="mb-0">制片最多的国家</h5>
+                                </div>
+                                <div class="icon-shape icon-md bg-light-primary text-primary
+                      rounded-2">
+                                    <i class="bi bi-briefcase fs-4"></i>
+                                </div>
+                            </div>
+                            <!-- project number -->
+                            <div>
+                                <h2 class="fw-bold">{{maxCountry}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row mt-6 ">
+                <!-- Area Chart -->
+                <div class="col-xl-6 col-lg-6">
+                    <!-- Card Header - Dropdown-->
+                    <div class="card shadow mb-4">
+                        <div class="card-header bg-white py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h4 class="m-0 font-weight-bold" style="font-weight: bold !important;">电影类型饼状图</h4>
+                        </div>
+                        <!-- Card Body-->
+                        <div class="card-body">
+                            <div id="main" style="width:130%;height:450px">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xl-6 clo-lo-4">
+                    <!-- Card Header - Dropdown-->
+                    <div class="card shadow mb-4">
+                        <div class="card-header bg-white py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h4 class="m-0 font-weight-bold" style="font-weight: bold !important;">电影评分折线图</h4>
+                        </div>
+                        <!-- Card Body-->
+                        <div class="card-body">
+                            <div id="mains" style="width:110%;height:450px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-6">
+                <div class="container-fluid">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 bg-white">
+                            <h4 class="m-0 font-weight-bold" style="font-weight: bold !important;">电影列表</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>电影名称</th>
+                                        <th>电影海报</th>
+                                        <th>电影评分</th>
+                                        <th>概述</th>
+                                        <th>演员</th>
+                                        <th>电影年份</th>
+                                        <th>电影类型</th>
+                                        <th>评论人数</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in tableData %}
+                                    <tr>
+                                        <td scope="row">{{ item[0] }}</td>
+                                        <td style="text-decoration: underline"> <!-- 电影名字-->
+                                            <a style=" cursor: pointer;" href="{{item[1]}}"> <!-- 电影详情页链接-->
+                                                {{ item[3] }}
+                                            </a>
+                                        </td>
+                                        <td style="text-align:center;width: 150px"> <!-- 电影封面-->
+                                            <a target="_blank" href="{{item[1]}}">
+                                                <img style="width:75%;object-fit:cover;height:150px;" src="{{item[2]}}"
+                                                     alt="">
+                                            </a>
+                                        </td>
+                                        <td><span class="text-primary"> {{ item[5] }}分</span></td>
+                                        <td>{{ item[7] }}</td> <!-- 概述-->
+                                        <td>{{ item[10] }}</td> <!-- 演员-->
+                                        <td>{{ item[11] }}年</td>
+                                        <td>{{ item[13] }}</td> <!-- 电影类型-->
+                                        <td>{{ item[6] }}人</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="copy-right row mt-8 text-center">
+                    <p>Copyright &copy; 还不知道看什么电影吗？ <a target="_blank"
+                                                                 href="https://movie.douban.com/top250">
+                        豆瓣电影排行榜</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<!-- Libs JS -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.bundle.min.js"></script>
+<script src="static/js/jquery.slimscroll.min.js"></script>
+<script src="static/js/feather.min.js"></script>
+<script src="static/js/prism.js"></script>
+<script src="static/js/apexcharts.min.js"></script>
+<script src="static/js/dropzone.min.js"></script>
+<script src="static/js/prism-toolbar.min.js"></script>
+<script src="static/js/prism-copy-to-clipboard.min.js"></script>
+
+
+<!-- Page level plugins -->
+<script src="static/js/jquery.dataTables.min.js"></script>
+<script src="static/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="static/js/datatables-demo.js"></script>
+
+
+<!-- Theme JS -->
+<script src="static/js/theme.min.js"></script>
+
+<script src="static/js/echarts.js"></script>
+
+<!--table-->
+<script src="static/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="static/js/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="static/js/sb-admin-2.min.js"></script>
+
+<script>
+var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+var typeEcharData = {{ typeEcharData | tojson | safe }};
+
+option = {
+  title: {
+    subtext: '快来看看有没有想看的电影类型吧😍',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left'
+  },
+  series: [
+    {
+      name: '种类个数',
+      type: 'pie',
+      radius: '50%',
+      data: typeEcharData,
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+
+option && myChart.setOption(option);
+
+</script>
+
+
+<script>
+var chartDoms = document.getElementById('mains');
+var myCharts = echarts.init(chartDoms);
+var options;
+
+options = {
+  title: {
+    subtext: '很多经典电影还在等你哦😊',
+    left: 'center'
+  },
+
+  tooltip: {
+    trigger: 'axis', // 设置触发方式为坐标轴触发
+    axisPointer: {
+      type: 'cross' // 设置指示器类型为十字准星指示器
+    }
+  },
+  xAxis: {
+    type: 'category',
+    data: {{ row | tojson }}
+  },
+  yAxis: {
+    type: 'value'
+  },
+  series: [
+    {
+      data: {{ columns }},
+      type: 'line',
+      areaStyle: {
+        color: 'rgba(0, 128, 255, 0.5)'
+      },
+      emphasis: {
+        focus: 'series'
+      }
+    }
+  ]
+};
+
+options && myCharts.setOption(options);
+
+</script>
+</body>
+
+</html>

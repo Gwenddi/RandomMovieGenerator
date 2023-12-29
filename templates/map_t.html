@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="referrer" content="no-referrer"/>
+
+    <link href="static/css/bootstrap-icons.css" rel="stylesheet">
+    <link href="static/css/dropzone.css" rel="stylesheet">
+    <link href="static/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="static/css/prism-okaidia.css" rel="stylesheet">
+
+    <!-- tables.html所需-->
+    <link href="static/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="static/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="static/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="static/css/theme.min.css">
+    <title>地图分析表 | 来查看电影分布时间吧！</title>
+</head>
+
+<body class="bg-light">
+<div id="db-wrapper">
+    <!-- navbar vertical -->
+    <!-- Sidebar -->
+    <nav class="navbar-vertical navbar">
+        <div class="nav-scroller">
+            <!-- Brand logo -->
+            <a class="navbar-brand" href="/home">
+                <h3 style="color: #ffffff;font-weight: bold;">电影随心配</h3>
+            </a>
+            <!-- Navbar nav -->
+            <ul class="navbar-nav flex-column" id="sideNavbar">
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="/home">
+                        <i data-feather="home" class="nav-icon icon-xs me-2"></i> 首页
+                    </a>
+
+                </li>
+
+                <!-- Nav item -->
+                <li class="nav-item">
+                    <div class="navbar-heading">还不知道看什么电影吗？</div>
+                </li>
+                <!-- 账号管理 -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow  collapsed " href="#!" data-bs-toggle="collapse"
+                       data-bs-target="#navAuthentication" aria-expanded="false" aria-controls="navAuthentication">
+                        <i data-feather="lock" class="nav-icon icon-xs me-2">
+                        </i> 账号管理
+                    </a>
+                    <div id="navAuthentication" class="collapse " data-bs-parent="#sideNavbar">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link " href="/login"> 退出当前账号</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  " href="/register"> 注册新的账号</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <!-- Nav item -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="/movieList">
+                        <i data-feather="layers" class="nav-icon icon-xs me-2">
+                        </i> 电影详细信息
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <div class="navbar-heading">数据表</div>
+                </li>
+                <!-- 时间分析表 -->
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="/time_t">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 时间分析表
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link has-arrow" href="/rate_t">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 评分分析表
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link has-arrow active" href="/map_t">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 地图分析表
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/act_dir_t">
+                        <i data-feather="package" class="nav-icon icon-xs me-2">
+                        </i> 演员与导演分析表
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <!-- Page content -->
+    <div id="page-content">
+        <div class="header @@classList">
+            <!-- navbar -->
+            <nav class="navbar-classic navbar navbar-expand-lg">
+                <a id="nav-toggle" href="#"><i data-feather="menu" class="nav-icon me-2 icon-xs"></i></a>
+
+                <!--Navbar nav -->
+                <ul class="navbar-nav navbar-right-wrap ms-auto d-flex nav-top-wrap">
+                    <!-- List -->
+                    <li class="dropdown ms-2">
+                        <a class="rounded-circle" href="#" role="button" id="dropdownUser" data-bs-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <div class="avatar avatar-md avatar-indicators avatar-online">
+                                <img alt="avatar" src="static/picture/head/head4.png" class="rounded-circle">
+                            </div>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownUser">
+                            <div class="px-4 pb-0 pt-2">
+
+                                <div class="lh-1 ">
+                                    <a href="#" class="text-inherit fs-6">{{email}}</a>
+                                </div>
+
+                                <div class=" dropdown-divider mt-3 mb-2"></div>
+                            </div>
+
+                            <ul class="list-unstyled">
+
+                                <li>
+                                    <a class="dropdown-item" href="/logout">
+                                        <i class="me-2 icon-xxs dropdown-item-icon" data-feather="power"></i>退出登录
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        <!-- Container fluid -->
+        <div class="bg-primary pt-10 pb-21"></div>
+        <div class="container mt-n22 px-6">
+            <div class="row ">
+                <!-- Area Chart -->
+                <div class="col-xl-12 col-lg-12">
+                    <!-- Card Header - Dropdown-->
+                    <div class="card shadow mb-4">
+                        <div class="card-header bg-white py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h4 class="m-0 font-weight-bold" style="font-weight: bold !important;">电影拍摄地点统计图</h4>
+                        </div>
+                        <!-- Card Body-->
+                        <div class="card-body">
+                            <div id="mains" style="width:110%;height:450px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<div class="copy-right row mt-8 text-center">
+                    <p>Copyright &copy; 还不知道看什么电影吗？ <a target="_blank"
+                                                                 href="https://movie.douban.com/top250">
+                        豆瓣电影排行榜</a></p>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<!-- Libs JS -->
+<script src="static/js/jquery.min.js"></script>
+<script src="static/js/bootstrap.bundle.min.js"></script>
+<script src="static/js/jquery.slimscroll.min.js"></script>
+<script src="static/js/feather.min.js"></script>
+<script src="static/js/prism.js"></script>
+<script src="static/js/apexcharts.min.js"></script>
+<script src="static/js/dropzone.min.js"></script>
+<script src="static/js/prism-toolbar.min.js"></script>
+<script src="static/js/prism-copy-to-clipboard.min.js"></script>
+
+
+<!-- Page level plugins -->
+<script src="static/js/jquery.dataTables.min.js"></script>
+<script src="static/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="static/js/datatables-demo.js"></script>
+
+
+<!-- Theme JS -->
+<script src="static/js/theme.min.js"></script>
+
+<script src="static/js/echarts.js"></script>
+
+<!--table-->
+<script src="static/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="static/js/jquery.easing.min.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="static/js/sb-admin-2.min.js"></script>
+
+<script>
+var chartDoms = document.getElementById('mains');
+var myCharts = echarts.init(chartDoms);
+var options;
+
+options = {
+visualMap: [
+    {
+      show: false,
+      type: 'continuous',
+      seriesIndex: 0,
+      min: 0,
+      max: 10
+    }
+  ],
+  title: {
+    subtext: '很多经典电影还在等你哦😊',
+    left: 'center'
+  },
+
+  tooltip: {
+    trigger: 'axis', // 设置触发方式为坐标轴触发
+    axisPointer: {
+      type: 'cross' // 设置指示器类型为十字准星指示器
+    }
+  },
+
+  xAxis: {
+    type: 'value',
+    boundaryGap: [0, 0.01]
+  },
+  yAxis: {
+    type: 'category',
+    data: {{ row | tojson}}
+  },
+  series: [
+    {
+      name: '电影数量',
+      type: 'bar',
+      data: {{ columns }}
+
+    }
+  ]
+};
+
+options && myCharts.setOption(options);
+
+
+</script>
+
+
+</body>
+
+</html>
