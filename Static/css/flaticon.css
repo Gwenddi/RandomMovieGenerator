@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "flaticon";
+    src: url("../font/flaticon.ttf") format("truetype"),
+url("../font/flaticon.woff") format("woff"),
+url("../font/flaticon.woff2") format("woff2"),
+url("../font/flaticon.eot") format("embedded-opentype"),
+url("https://dynamicproductionhousebd.com/homeland-demo-preview/fonts/flaticon/flaticon.svg?0781a13781b7ee6919271ada33cadf81") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flaticon-plus:before {
+    content: "\f101";
+}
+.flaticon-placeholder:before {
+    content: "\f102";
+}
+.flaticon-apartments-prices:before {
+    content: "\f103";
+}
+.flaticon-apartments:before {
+    content: "\f104";
+}
+.flaticon-protection-shield-with-a-check-mark:before {
+    content: "\f105";
+}
+.flaticon-planet-earth:before {
+    content: "\f106";
+}
+.flaticon-building:before {
+    content: "\f107";
+}
+.flaticon-pin:before {
+    content: "\f108";
+}
+.flaticon-home:before {
+    content: "\f109";
+}
+.flaticon-house:before {
+    content: "\f10a";
+}
+.flaticon-infinity:before {
+    content: "\f10b";
+}
+.flaticon-quotation-marks:before {
+    content: "\f10c";
+}

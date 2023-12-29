@@ -1,0 +1,347 @@
+/* Normal desktop :992px. */
+@media (min-width: 992px) and (max-width: 1200px) {
+    .main-menu nav ul li a {
+        padding: 20px 15px;
+    }
+    .why-choose-us-area {
+        padding-left: 65px;
+        padding-right: 65px;
+    }
+    .single-choose-us .choose-us-content h4 {
+        font-size: 16px;
+    }
+    .looking-content h2 {
+        font-size: 30px;
+        padding-bottom: 10px;
+    }
+    .looking-content p {
+        font-size: 15px;
+    }
+    .looking-content-right h4 {
+        font-size: 18px;
+    }
+    .looking-content-right p {
+        font-size: 14px;
+    }
+    .properties-title h2 {
+        font-size: 32px;
+    }
+    .properties-title p {
+        padding: 0 145px;
+        padding-bottom: 20px;
+    }
+    .single-counter span {
+        font-size: 30px;
+    }
+    .single-counter p {
+        font-size: 18px;
+    }
+    .news-title h2 {
+        font-size: 32px;
+    }
+    .news-content h4 {
+        font-size: 18px;
+    }
+    .news-content p {
+        font-size: 14px;
+        color: #111111;
+        text-align: justify;
+    }
+    .agent-title h2 {
+        font-size: 32px;
+    }
+    .footer-top-area {
+        padding-bottom: 60px;
+    }
+    .single-footer p {
+        line-height: 24px;
+        padding-bottom: 0;
+        text-align: justify;
+    }
+    .footer-address ul li {
+        margin: 7px 0;
+    }
+}
+ 
+/* Tablet desktop :768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+    .header-bottom-area {
+        padding-bottom: 20px;
+    }
+    .sign-in-btn {
+        margin-right: 80px;
+    }
+    .slider-area {
+        padding-top: 70px;
+        padding-bottom: 80px;
+    }
+    .slider-content h1 {
+        font-size: 35px;
+    }
+    .looking-content h2 {
+        font-size: 25px;
+        padding-top: 31px;
+    }
+    .looking-content p {
+        font-size: 14px;
+        text-align: justify;
+        line-height: 24px;
+        padding-bottom: 2px;
+    }
+    .looking-content-right h4 {
+        font-size: 18px;
+    }
+    .looking-content-right p {
+        font-size: 14px;
+    }
+    .properties-title h2 {
+        font-size: 30px;
+    }
+    .properties-title p {
+        font-size: 15px;
+        padding: 0 40px;
+        padding-bottom: 20px;
+    }
+    .properties-info h4 {
+        font-size: 16px;
+    }
+    .properties-info p {
+        font-size: 12px;
+    }
+    .single-counter span {
+        font-size: 30px;
+    }
+    .single-counter p {
+        font-size: 16px;
+        letter-spacing: 0px;
+        line-height: 30px;
+    }
+    .news-title h2 {
+        font-size: 30px;
+    }
+    .news-content p {
+        font-size: 15px;
+        line-height: 24px;
+    }
+    .news-item-bottom a {
+        font-size: 14px;
+    }
+    .agent-title h2 {
+        font-size: 30px;
+        padding-bottom: 10px;
+    }
+    .single-agent p {
+        text-align: center;
+    }
+    .single-footer h4 {
+        padding-bottom: 12px;
+    }
+    .single-footer p {
+        font-size: 14px;
+        line-height: 24px;
+        padding-bottom: 0;
+    }
+    .footer-address ul li {
+        font-size: 14px;
+        margin: 5px 0;
+    }
+    .footer-social a {
+        font-size: 12px;
+        width: 34px;
+        height: 34px;
+        line-height: 36px;
+    }
+    .single-footer .footer-menu ul li a {
+        font-size: 14px;
+    }
+    .copyright p {
+        font-size: 14px;
+    }
+}
+ 
+/* small mobile :320px. */
+@media (max-width: 767px) {
+    .language ul li > a {
+        font-size: 12px;
+    }
+    .header-top-social {
+        text-align: right;
+    }
+    .header-top-social a {
+        font-size: 12px;
+    }
+    .header-location {
+        text-align: left !important;
+    }
+    .header-location a {
+        font-size: 12px;
+    }
+    .header-mail a {
+        font-size: 12px;
+    }
+    .header-bottom-area {
+        padding: 15px 0;
+    }
+    .sticky{
+        display: none;
+    }
+    .logo {
+        text-align: center;
+        padding-bottom: 20px;
+    }
+    .sign-in-btn {
+        float: left !important;
+    }
+    .sign-in-btn a {
+        font-size: 12px;
+    }
+    .mean-container .mean-nav ul li a {
+        font-size: 12px;
+    }
+    .slider-area {
+        padding-top: 38px;
+        padding-bottom: 50px;
+    }
+    .slider-content h1 {
+        font-size: 14px;
+        padding-bottom: 2px;
+    }
+    .slider-content p {
+        font-size: 12px;
+        padding-bottom: 10px;
+    }
+    .search form {
+        display: block;
+    }
+    .single-search .nice-select {
+        margin-bottom: 30px;
+    }
+    .why-choose-us-area {
+        padding-top: 50px;
+        padding-bottom: 30px;
+    }
+    .why-choose-us-title h2 {
+        font-size: 16px;
+    }
+    .why-choose-us-title h3 {
+        font-size: 22px;
+    }
+    .single-choose-us .choose-us-content h4 {
+        font-size: 18px;
+    }
+    .single-choose-us .choose-us-content p {
+        font-size: 14px;
+    }
+    .looking-for-area {
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+    .looking-content h2 {
+        font-size: 18px;
+        padding-top: 0;
+        text-align: center;
+        padding-bottom: 7px;
+    }
+    .looking-content p {
+        font-size: 14px;
+        padding-bottom: 10px;
+        text-align: justify;
+    }
+    .theme-btn a {
+        font-size: 13px;
+        margin-bottom: 40px;
+    }
+    .looking-content-right h4 {
+        font-size: 16px;
+    }
+    .looking-content-right p {
+        font-size: 14px;
+    }
+    .properties-title h2 {
+        font-size: 18px;
+    }
+    .properties-title p {
+        font-size: 14px;
+        padding: 0 10px;
+        padding-bottom: 25px;
+        text-align: justify;
+    }
+    .properties-info h4 {
+        font-size: 14px;
+    }
+    .properties-info p {
+        font-size: 11px;
+    }
+    .single-counter span {
+        font-size: 22px;
+    }
+    .single-counter p {
+        font-size: 15px;
+        letter-spacing: 0;
+        line-height: 24px;
+    }
+    .news-title h4 {
+        font-size: 15px;
+    }
+    .news-title h2 {
+        font-size: 22px;
+    }
+    .news-content h4 {
+        font-size: 16px;
+    }
+    .news-content p {
+        font-size: 13px;
+        text-align: justify;
+    }
+    .news-item-bottom a {
+        font-size: 12px;
+    }
+    .news-item-bottom .admin p {
+        font-size: 12px;
+    }
+    .agent-bg {
+        padding: 50px 10px;
+    }
+    .agent-title h2 {
+        font-size: 16px;
+        padding-bottom: 10px;
+    }
+    .single-agent p {
+        font-size: 13px;
+        text-align: justify;
+    }
+    .footer-top-area {
+        padding: 0 10px;
+    }
+    .single-footer p {
+        font-size: 13px;
+        text-align: justify;
+    }
+    .footer-address ul li {
+        font-size: 13px;
+    }
+    .footer-social a {
+        font-size: 13px;
+    }
+    .single-footer h4 {
+        font-size: 18px;
+    }
+    .copyright p {
+        font-size: 12px;
+        font-weight: 500;
+        color: #111111;
+        margin-bottom: 0;
+    }
+
+}
+ 
+/* Large Mobile :480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.container {width:450px}
+.header-top-social {
+	text-align: right;
+}
+    .header-location {
+        text-align: left !important;
+    }
+}
