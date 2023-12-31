@@ -23,7 +23,7 @@
 | Flask框架                 | 定义视图函数并与URL绑定、处理请求    |
 | Echarts库、 Bootstrap框架 | 实现数据可视化                       |
 
-### 索引链接
+### 链接
 
 1. [Bootstrap Admin Dashboard Templates - Start Bootstrap](https://startbootstrap.com/templates/admin-dashboard)
 2. [Examples - Apache ECharts](https://echarts.apache.org/examples/zh/index.html)
